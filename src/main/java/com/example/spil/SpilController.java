@@ -7,10 +7,6 @@ import javafx.scene.control.Label;
 
 public class SpilController {
 
-
-
-
-
     private Spillet hent_fra_spil = new Spillet();
 
     @FXML
@@ -101,7 +97,12 @@ public class SpilController {
         opdaterGuiInfoLabelTur();
 
     }
-
+/*
+Her opdatere vi GuiVinderlabel, som er en label som er aktiv hele tiden, men der bliver kun vidst tekst,
+når der er en spiller der har vundet. Derfor skal denne heller ikke køres i initialize,
+da vi jo ikke har en vinder i starten
+af spillet.
+ */
     public void opdaterGuiVinderLabel(){
 
         if (hent_fra_spil.enDerHarVundet) {
@@ -111,13 +112,20 @@ public class SpilController {
 
     }
 
+
+    /*
+    Her opdatere vi vores GuiInfoLabel, som er en label, hvor man kan se hvilken spilleres tur det er.
+    Her henter vi Næstespiller fra spillet.
+     */
     public void opdaterGuiInfoLabelTur(){
 
         gui_info_label.setText("Spiller " + hent_fra_spil.NæsteSpiller + "'s tur");
 
     }
 
-
+/*
+Her er alt det der skal ske, når spillet starter.
+ */
    public void initialize() {
        opdaterGuiInfoLabelTur();
 
